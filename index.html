@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Panda</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="https://i.pinimg.com/736x/d0/06/49/d00649bf935724326d92e35057d4ceeb.jpg" type="image/x-icon">
+    <style>
+        /* Add any custom styles here */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .overlay-card {
+            transform: translateY(50%);
+        }
+        #mobile-menu {
+            z-index: 50; /* High z-index to ensure it stays on top */
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-100">
+
+    <!-- Navbar -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between flex-wrap">
+            <!-- Logo -->
+            <div class="flex-1 text-center md:text-left mb-4 md:mb-0">
+                <a href="#">
+                    <img src="https://cdn.worldvectorlogo.com/logos/foodpanda-logo.svg" alt="Food Panda Logo" class="h-12 md:h-16 mx-auto md:mx-0">
+                </a>
+            </div>
+            <!-- Navigation -->
+            <div class="flex items-center space-x-4 md:space-x-6 md:flex-grow">
+                <a href="#signup" class="hidden md:inline-block bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">Sign Up</a>
+                <a href="#login" class="hidden md:inline-block bg-gray-200 text-gray-800 py-2 px-4 rounded hover:bg-gray-300">Login</a>
+                <div class="relative flex items-center space-x-2">
+                    <!-- Language Dropdown -->
+                    <div class="relative group">
+                        <button class="flex items-center bg-gray-200 text-gray-800 py-2 px-4 rounded hover:bg-gray-300">
+                            <span class="mr-2">EN</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="dropdown-menu absolute right-0 hidden mt-2 bg-white shadow-lg rounded-md w-32 z-10">
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">EN</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">ES</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">FR</a>
+                        </div>
+                    </div>
+                    <!-- Basket Icon -->
+                    <a href="#basket" class="text-gray-600 hover:text-gray-900 flex items-center">
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l3.6 7.2 1.8-2.4L12 7h8a1 1 0 01.8 1.6L14.4 17H6l-3-7H1a1 1 0 01-1-1v-1a1 1 0 011-1h2.6L5 3z"></path>
+                        </svg>
+                        <span class="text-sm">Basket</span>
+                    </a>
+                </div>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center">
+                <button id="menu-toggle" class="text-gray-600 hover:text-gray-900">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden absolute top-16 left-0 w-full bg-white shadow-md">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="#signup" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">Sign Up</a>
+                <a href="#login" class="bg-gray-200 text-gray-800 py-2 px-4 rounded hover:bg-gray-300">Login</a>
+                <div class="relative flex items-center space-x-2">
+                    <!-- Language Dropdown -->
+                    <div class="relative group">
+                        <button class="flex items-center bg-gray-200 text-gray-800 py-2 px-4 rounded hover:bg-gray-300">
+                            <span class="mr-2">EN</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="dropdown-menu absolute right-0 hidden mt-2 bg-white shadow-lg rounded-md w-32 z-10">
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">EN</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">ES</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">FR</a>
+                        </div>
+                    </div>
+                    <!-- Basket Icon -->
+                    <a href="#basket" class="text-gray-600 hover:text-gray-900 flex items-center">
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l3.6 7.2 1.8-2.4L12 7h8a1 1 0 01.8 1.6L14.4 17H6l-3-7H1a1 1 0 01-1-1v-1a1 1 0 011-1h2.6L5 3z"></path>
+                        </svg>
+                        <span class="text-sm">Basket</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+  
+
+    <section class="relative mt-4">
+        <!-- Reduced Height Image -->
+        <img src="https://images.deliveryhero.io/image/foodpanda/home-vendor-pk.jpg?width=1400&height=896" alt="Food Panda Background" class="w-full h-64 md:h-96 object-cover">
+        
+        <!-- Overlay Card -->
+        <div class="absolute inset-0 flex items-center justify-center ">
+            <div class="bg-white bg-opacity-90 shadow-lg p-8 rounded-xl w-11/12 md:w-1/2 overlay-card ">
+                <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4">List your restaurant or shop on foodpanda</h2>
+                <p class="text-gray-700 mb-6">
+                    Would you like millions of new customers to enjoy your amazing food and groceries? So would we!
+                    <br><br>
+                    It's simple: we list your menu and product lists online, help you process orders, pick them up, and deliver them to hungry pandas – in a heartbeat!
+                    <br><br>
+                    Interested? Let's start our partnership today!
+                </p>
+                <a href="#get-started" class="bg-pink-500 text-white py-2 px-6 rounded-full text-lg hover:bg-pink-600">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12">
+        <!-- Heading -->
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900  mt-96">Find us in these cities and many more!</h2>
+        
+        <!-- Cards Grid -->
+          <!-- Cities Section -->
+    <section class="py-12">
+        <!-- Cards Grid -->
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- 30 Cards -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img src="https://media-cdn.tripadvisor.com/media/photo-s/19/de/2e/3f/islamabad-city-in-pakistan.jpg" alt="City 1" class="w-full h-32 sm:h-48 object-cover">
+                    <div class="p-4">
+                        <p class="text-gray-800 text-sm font-semibold">Islamabad</p>
+                    </div>
+                </div>
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNztRhu5bz03ZIuir9ycB0EaLUV0LZtoPVPw&s" alt="City 2" class="w-full h-32 sm:h-48 object-cover">
+                    <div class="p-4">
+                        <p class="text-gray-800 text-sm font-semibold">Karachi</p>
+                    </div>
+                </div>
+                <!-- Repeat this structure for each city (total 30 cards) -->
+                <!-- Add more cards here -->
+                <!-- Sample repeated card structure -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyJCR5fHl4cYX9rp_FhQt8DqJT5045u9HTIw&s" alt="City 3" class="w-full h-32 sm:h-48 object-cover">
+                    <div class="p-4">
+                        <p class="text-gray-800 text-sm font-semibold">Lahore</p>
+                    </div>
+                </div>
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxHt0LFCxglL-BEanxTzXSPF_CUG4LlENjkA&s" alt="City 4" class="w-full h-32 sm:h-48 object-cover">
+                    <div class="p-4">
+                        <p class="text-gray-800 text-sm font-semibold">Faislabad</p>
+                    </div>
+                </div>
+                <!-- More cards until total of 30 cards -->
+                <!-- For simplicity, here is a loop using the same card structure -->
+                <!-- Replace 'cityX-image-url.jpg' with the actual URLs and update text -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/7c/ca/dc/caption.jpg?w=800&h=800&s=1" alt="City 5" class="w-full h-32 sm:h-48 object-cover">
+                    <div class="p-4">
+                        <p class="text-gray-800 text-sm font-semibold">Abbotobad</p>
+                    </div>
+                </div>
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img src="https://www.travelgirls.pk/wp-content/uploads/2020/09/Noor-Mahal-Bahawalpur.jpg" alt="City 6" class="w-full h-32 sm:h-48 object-cover">
+                    <div class="p-4">
+                        <p class="text-gray-800 text-sm font-semibold">Bahawalpur</p>
+                    </div>
+                </div>
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/b1/52/58/situated-in-gujranwala.jpg?w=500&h=-1&s=1" alt="City 6" class="w-full h-32 sm:h-48 object-cover">
+                    <div class="p-4">
+                        <p class="text-gray-800 text-sm font-semibold">Gujranwala</p>
+                    </div>
+                </div>
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa4XP1gHOCzsjbYKv3nQ3LJ-l-DuaoPi4S7Q&s" alt="City 6" class="w-full h-32 sm:h-48 object-cover">
+                    <div class="p-4">
+                        <p class="text-gray-800 text-sm font-semibold"></p>
+                    </div>
+                </div>
+                <!-- Continue adding more cards up to city 30 -->
+            </div>
+        </div>
+
+    </section>
+
+    <section class="py-12">
+        <!-- Heading -->
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Put us in your pocket</h2>
+        
+        <!-- Large Card with Pink Background -->
+        <div class="container mx-auto px-4 relative">
+            <div class="bg-pink-500 text-white rounded-lg shadow-lg p-8 flex flex-col md:flex-row items-center md:items-start max-w-5xl mx-auto">
+                
+                <!-- Left Side Content -->
+                <div class="md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Download the food and groceries you love</h3>
+                    <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-4">
+                        <img src="https://images.deliveryhero.io/image/foodpanda/homepage/pkhomepageqrcode.png" alt="Barcode Reader" class="w-16 h-16 md:w-24 md:h-24 object-cover mb-4 md:mb-0">
+                        <p class="text-sm md:text-base">
+                            It's all at your fingertips – the restaurants and shops you love. Find the right food and groceries to suit your mood, and make the first bite last. Go ahead, download us.
+                        </p>
+                    </div>
+                    <!-- Three Small Images -->
+                   
+                </div>
+                
+                <!-- Right Side Large Image -->
+                <div class="md:w-1/2 flex justify-center md:justify-end mt-6 md:mt-0 relative">
+                    <img src="https://images.deliveryhero.io/image/foodpanda/home-foodpanda-apps.png?width=1400&height=1113" alt="Large Image" class="w-full max-w-md object-cover rounded-lg">
+                </div>
+                
+              
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="relative mt-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">Find us in these cities and many more!</h2>
+        <!-- Reduced Height Image -->
+        <img src="https://images.deliveryhero.io/image/foodpanda/home-corporate-pk.jpg?width=1400&height=896" alt="Food Panda Background" class="w-full h-64 md:h-96 object-cover">
+        
+        <!-- Overlay Card -->
+        <div class="absolute inset-0 flex items-center justify-center ">
+            <div class="bg-white bg-opacity-90 shadow-lg p-8 rounded-xl w-11/12 md:w-1/2 overlay-card ">
+                <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4">foodpanda for business</h2>
+                <p class="text-gray-700 mb-6">
+                    Order lunch or fuel for work-from-home, late nights in the office, corporate <br>events, client meetings, and much more.
+                </p>
+                <a href="#get-started" class="bg-pink-500 text-white py-2 px-6 rounded-full text-lg hover:bg-pink-600">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12">
+        <!-- Bold Heading -->
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mt-20">Order food and groceries online from the best restaurants and shops on foodpanda</h2> <br>
+        
+        <!-- Light Colored Text -->
+        <p class="text-base md:text-lg text-center text-gray-600 max-w-3xl mx-auto px-4">
+            Are you hungry? Did you have a long and stressful day? Interested in getting a cheesy pizza delivered to your office or looking to avoid the weekly shop? Then foodpanda Pakistan is the right destination for you! foodpanda offers you a long and detailed list of the best restaurants and shops near you to help make your every day easier.
+        </p>
+         <!-- Bold Heading -->
+         <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mt-20">What's new?</h2> <br>
+        
+         <!-- Light Colored Text -->
+         <p class="text-base md:text-lg text-center text-gray-600 max-w-3xl mx-auto px-4">
+            ✓ Wide variety of restaurants and shops, an abundance of cuisines & products. <br>
+            ✓ High quality delivery service. <br>
+            ✓ Live chat feature to give App users instant help when they need it. <br>
+            ✓ NEW: foodpanda grocery delivery! Discover the best shops, pharmacies, bakeries and more near you. <br>
+         </p>
+         <!-- Bold Heading -->
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mt-20">Frequently Asked Questions</h2> 
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mt-20">How can I get foodpanda delivery?</h2> <br>
+        
+        <!-- Light Colored Text -->
+        <p class="text-base md:text-lg text-center text-gray-600 max-w-3xl mx-auto px-4">
+            To get foodpanda delivery, simply locate the restaurants and shops near you by typing in your address, browse through a variety of restaurants and cuisines, check menus and prices, choose your dishes and add them to the basket. Now you only need to checkout and make the payment. Soon your delicious food will arrive at your doorstep!
+        </p>
+         <!-- Bold Heading -->
+         <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mt-20">Which takeout restaurants open now near me?</h2> <br>
+        
+         <!-- Light Colored Text -->
+         <p class="text-base md:text-lg text-center text-gray-600 max-w-3xl mx-auto px-4">
+            You can check which takeout restaurants are open now near you by simply typing your address in the location bar on foodpanda and pressing search. You will see all the available restaurants and shops that deliver to your area.
+         </p>
+            <!-- Bold Heading -->
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mt-20">Does foodpanda deliver 24 hours?</h2> <br>
+        
+            <!-- Light Colored Text -->
+            <p class="text-base md:text-lg text-center text-gray-600 max-w-3xl mx-auto px-4">
+                Yes, foodpanda in Pakistan delivers 24 hours. However, many restaurants may be unavailable for a late-night delivery. Please check which places in Pakistan deliver to you within 24 hours by using your address. You can also order groceries 24 hours a day via pandamart.
+            </p>
+    </section>
+
+     <!-- Section: Countries -->
+     <section class="py-12">
+        <!-- Upper Line -->
+        <hr class="border-t-2 border-gray-300 mb-4 mx-auto w-3/4">
+        
+        <!-- Centered Countries -->
+        <p class="text-lg md:text-xl text-center text-gray-800 tracking-wider">
+            Laos | Cambodia | Myanmar | Thailand | Hong Kong | Taiwan | Malaysia | Philippines | Singapore | Bangladesh
+        </p>
+        
+        <!-- Lower Line -->
+        <hr class="border-t-2 border-gray-300 mt-4 mx-auto w-3/4">
+    </section>
+    
+     <!-- Footer Section -->
+     <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <!-- First Row: Copyright -->
+            <div class="text-center mb-8">
+                <p class="text-lg font-semibold">© foodpanda</p>
+            </div>
+
+            <!-- Second Row: Links -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h5 class="font-semibold mb-4">Company</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-yellow-300">Press</a></li>
+                        <li><a href="#" class="hover:text-yellow-300">Help Center</a></li>
+                        <li><a href="#" class="hover:text-yellow-300">Refunds with pandapay</a></li>
+                        <li><a href="#" class="hover:text-yellow-300">Terms & Conditions</a></li>
+                        <li><a href="#" class="hover:text-yellow-300">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold mb-4">Services</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-yellow-300">Security</a></li>
+                        <li><a href="#" class="hover:text-yellow-300">Download Apps</a></li>
+                        <li><a href="#" class="hover:text-yellow-300">Human Rights Policy</a></li>
+                        <li><a href="#" class="hover:text-yellow-300">Careers</a></li>
+                        <li><a href="#" class="hover:text-yellow-300">Suggest a Restaurant</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold mb-4">Offers</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-yellow-300">Cashback Terms</a></li>
+                        <li><a href="#" class="hover:text-yellow-300">All Cuisines</a></li>
+                        <li><a href="#" class="hover:text-yellow-300">Magazine</a></li>
+                        <li><a href="#" class="hover:text-yellow-300">Partner with Us</a></li>
+                        <li><a href="#" class="hover:text-yellow-300">Vouchers & Coupons</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Third Row: Delivery Areas and More -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                <div>
+                    <h5 class="font-semibold mb-4">Delivery Areas</h5>
+                    <ul class="space-y-2 text-center md:text-left">
+                        <li><a href="#" class="hover:text-yellow-300">Karachi</a></li>
+                        <li><a href="#" class="hover:text-yellow-300">Gujranwala</a></li>
+                        <li><a href="#" class="hover:text-yellow-300">Lahore</a></li>
+                        <li><a href="#" class="hover:text-yellow-300">Islamabad</a></li>
+                        <li><a href="#" class="hover:text-yellow-300">Peshawar</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold mb-4">More</h5>
+                    <ul class="space-y-2 text-center md:text-left">
+                        <li><a href="#" class="hover:text-yellow-300">All Cities</a></li>
+                        <li><a href="#" class="hover:text-yellow-300">COVID-19 Update</a></li>
+                        <li><a href="#" class="hover:text-yellow-300">Grocery Delivery</a></li>
+                        <li><a href="#" class="hover:text-yellow-300">Monthly Subscription</a></li>
+                        <li><a href="#" class="hover:text-yellow-300">Home Chef</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Fourth Row: Social Media and Newsletter -->
+            <div class="mt-12 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <!-- Social Media -->
+                <div class="text-sm mb-6 md:mb-0">
+                    <h5 class="font-semibold mb-4">Connect with Us</h5>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="#" class="text-white hover:text-yellow-300">Facebook</a>
+                        <a href="#" class="text-white hover:text-yellow-300">Twitter</a>
+                        <a href="#" class="text-white hover:text-yellow-300">Instagram</a>
+                    </div>
+                </div>
+
+                <!-- Newsletter Signup -->
+                <div class="text-sm">
+                    <h5 class="font-semibold mb-4">Stay Updated</h5>
+                    <div class="flex flex-col md:flex-row items-center">
+                        <input type="email" placeholder="Enter your email" class="px-4 py-2 text-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 w-full md:w-auto mb-2 md:mb-0">
+                        <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-medium px-4 py-2 rounded-lg">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+        
+
+
+    <!-- Scripts -->
+    <script>
+        // Toggle mobile menu visibility
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+<script src="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.js"></script>   
+</body>
+</html>
+
